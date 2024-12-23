@@ -22,3 +22,11 @@ Code=404
 
 === Step 2 ===
 Add openapi or swagger 3 to project
+
+
+=== Step 3 ===
+Enable CORS for all request of express's middleware
+
+
+=== Step 4 ===
+Refactor code to separate into index.js and app.js to improve code testablity
