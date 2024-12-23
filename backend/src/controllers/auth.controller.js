@@ -10,6 +10,7 @@ const users = [
   }
 ];
 
+
 exports.register = async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -31,6 +32,10 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   const { username, password } = req.body;
 
+  mockUser = {
+    username: 'demo01',
+    password: 'demo01password'
+  }
   // Simple mock authentication
   if (username === mockUser.username && password === mockUser.password) {
     const token = jwt.sign(
