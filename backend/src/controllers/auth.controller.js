@@ -1,32 +1,25 @@
 const jwt = require('jsonwebtoken');
-
-// This is a mock users array - in a real app, you'd use a database
-const users = [
-  {
-    username: 'demo01',
-    email: 'demo01@example.com',
-    // In real app, this would be hashed
-    password: 'demo01password'
-  }
-];
-
+const userRepository = require('../repositories/user.repository');
 
 exports.register = async (req, res) => {
-  const { username, email, password } = req.body;
+  try {
+    const { username, email, password } = req.body;
 
-  // Check if username or email already exists
-  const userExists = users.some(
-    user => user.username === username || user.email === email
-  );
+    // Check if username or email already exists
+    const existingUser = await userRepository.findByUsernameOrEmail(username, email);
+    
+    if (existingUser) {
+      return res.status(400).json({ message: 'User or password is duplicated' });
+    }
 
-  if (userExists) {
-    return res.status(400).json({ message: 'User or password is duplicated' });
+    // In a real app, you would hash the password before storing
+    await userRepository.createUser(username, email, password);
+
+    return res.status(200).json({ message: 'Register success' });
+  } catch (error) {
+    console.error('Registration error:', error);
+    return res.status(500).json({ message: 'Internal server error' });
   }
-
-  // In a real app, you would hash the password before storing
-  users.push({ username, email, password });
-
-  return res.status(200).json({ message: 'Register success' });
 };
 
 exports.login = async (req, res) => {
