@@ -32,6 +32,21 @@ class UserRepository {
       throw error;
     }
   }
+
+  async findByUsername(username) {
+    try {
+      const result = await pool.request()
+        .input('username', username)
+        .query(`
+          SELECT * FROM Users 
+          WHERE username = @username
+        `);
+      return result.recordset[0];
+    } catch (error) {
+      console.error('Database error:', error);
+      throw error;
+    }
+  }
 }
 
 module.exports = new UserRepository();

@@ -23,22 +23,30 @@ exports.register = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
-  const { username, password } = req.body;
+  try {
+    const { username, password } = req.body;
 
-  mockUser = {
-    username: 'demo01',
-    password: 'demo01password'
-  }
-  // Simple mock authentication
-  if (username === mockUser.username && password === mockUser.password) {
+    // Find user in database
+    const user = await userRepository.findByUsername(username);
+    
+    // Check if user exists and password matches
+    if (!user || user.password !== password) {
+      return res.status(401).json({ message: 'Username or password is incorrect' });
+    }
+
+    // Generate JWT token
     const token = jwt.sign(
-      { username: mockUser.username },
+      { 
+        userId: user.id,
+        username: user.username 
+      },
       process.env.JWT_SECRET || 'your-secret-key',
       { expiresIn: '1h' }
     );
 
     return res.status(200).json({ token });
+  } catch (error) {
+    console.error('Login error:', error);
+    return res.status(500).json({ message: 'Internal server error' });
   }
-
-  return res.status(404).json({ message: 'User or password was incorrect' });
 };
