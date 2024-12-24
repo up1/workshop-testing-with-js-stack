@@ -4,9 +4,11 @@ import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
 import { useVuelidate } from '@vuelidate/core'
 import { required, minLength, maxLength } from '@vuelidate/validators'
+import { useFormError } from '../composables/useFormError';
 
 const router = useRouter()
 const authStore = useAuthStore()
+const { error, showError, setError, clearError } = useFormError();
 
 const formData = ref({
   username: '',
@@ -25,12 +27,19 @@ const rules = {
 const v$ = useVuelidate(rules, formData)
 
 const login = async () => {
+  clearError()
   const isFormValid = await v$.value.$validate()
   if (!isFormValid) return
 
-  const success = await authStore.login(formData.value.username, formData.value.password)
+  const { success, error: loginError } = await authStore.login(
+    formData.value.username, 
+    formData.value.password
+  );
+
   if (success) {
-    router.push('/')
+    router.push('/');
+  } else {
+    setError(loginError);
   }
 }
 </script>
@@ -40,6 +49,9 @@ const login = async () => {
     <div class="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow">
       <h2 class="text-3xl font-bold text-center">Sign in</h2>
       <form @submit.prevent="login" class="mt-8 space-y-6">
+        <div v-if="showError" class="bg-red-50 p-4 rounded-md">
+          <p class="text-sm text-red-600">{{ error }}</p>
+        </div>
         <div>
           <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
           <input

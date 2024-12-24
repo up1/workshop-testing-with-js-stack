@@ -13,10 +13,10 @@ export const useAuthStore = defineStore('auth', () => {
       localStorage.setItem('token', response.token)
       user.value = response.user
       isAuthenticated.value = true
-      return true
-    } catch (error) {
-      console.error('Login failed:', error)
-      return false
+      return { success: true };
+    } catch (error: any) {
+      const message = error.response?.data?.message || 'Login failed. Please try again.';
+      return { success: false, error: message };
     }
   }
 
