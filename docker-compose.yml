@@ -1,8 +1,6 @@
 services:
   db:
-    build:
-      context: ./database
-      dockerfile: Dockerfile
+    image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: db
     ports:
       - 1433:1433
@@ -10,3 +8,24 @@ services:
       ACCEPT_EULA: Y
       MSSQL_SA_PASSWORD: xitgmLwmp123
       MSSQL_PID: Developer
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -Usa -PxitgmLwmp123 -C -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      retries: 10
+      start_period: 10s
+      timeout: 3s
+  
+  initial_db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    volumes:
+      - ./database:/works
+    command: >
+      bash -c '
+      /opt/mssql-tools18/bin/sqlcmd -S db -Usa -PxitgmLwmp123 -C -Q "CREATE DATABASE myusers";
+      /opt/mssql-tools18/bin/sqlcmd -S db -Usa -PxitgmLwmp123 -C -d myusers -i /works/setup.sql;
+      echo "All done!";
+      '
+    depends_on:
+      db:
+        condition: service_healthy
+    

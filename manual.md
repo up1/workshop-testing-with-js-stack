@@ -29,6 +29,26 @@ Access to frontend
 ```
 $docker compose up -d 
 $docker compose ps
+
+$docker exec -it db sh
+$cd /works
+$ls
+
+// Create database name = myusers
+$/opt/mssql-tools18/bin/sqlcmd -S localhost -Usa -PxitgmLwmp123 -C -Q 'CREATE DATABASE myusers'
+
+// Create tables and data for test
+$/opt/mssql-tools18/bin/sqlcmd -S localhost -Usa -PxitgmLwmp123 -C -d myusers -i setup.sql
+
+// Connect to database instance
+$/opt/mssql-tools18/bin/sqlcmd -S localhost -Usa -PxitgmLwmp123 -C
+$use myusers;
+$GO
+
+$select * from users;
+$Go
+
+$exit
 ```
 
 ## Backend with NodeJS

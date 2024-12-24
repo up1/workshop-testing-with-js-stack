@@ -1,4 +1,5 @@
-/opt/mssql-tools18/bin/sqlcmd -S localhost -Usa -PxitgmLwmp123 -C -d myusers -i setup.sql
+sleep 10s
+/opt/mssql-tools18/bin/sqlcmd -S db -Usa -PxitgmLwmp123 -C -d myusers -i /works/setup.sql
 if [ $? -eq 0 ]
 then
     echo "setup.sql completed"
