@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"username\": \"demo03\",\n  \"password\": \"demo03password\"\n}",
+					"raw": "{\n  \"username\": \"demo04\",\n  \"password\": \"demo04password\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -32,7 +32,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"username\": \"demo03\",\n  \"password\": \"demo03password\",\n  \"email\": \"demo03@email.com\"\n}",
+					"raw": "{\n  \"username\": \"demo04\",\n  \"password\": \"demo04password\",\n  \"email\": \"demo04@email.com\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
