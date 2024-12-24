@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 const userRepository = require('../repositories/user.repository');
 
 exports.register = async (req, res) => {
@@ -12,8 +13,10 @@ exports.register = async (req, res) => {
       return res.status(400).json({ message: 'User or password is duplicated' });
     }
 
-    // In a real app, you would hash the password before storing
-    await userRepository.createUser(username, email, password);
+    // Hash the password before storing
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    await userRepository.createUser(username, email, hashedPassword);
 
     return res.status(200).json({ message: 'Register success' });
   } catch (error) {
@@ -30,7 +33,7 @@ exports.login = async (req, res) => {
     const user = await userRepository.findByUsername(username);
     
     // Check if user exists and password matches
-    if (!user || user.password !== password) {
+    if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(401).json({ message: 'Username or password is incorrect' });
     }
 
