@@ -30,3 +30,37 @@ Enable CORS for all request of express's middleware
 
 === Step 4 ===
 Refactor code to separate into index.js and app.js to improve code testablity
+
+=== Step 5 ===
+
+Create REST API with nodejs and express library from below spec
+* Username or email must be unique
+
+POST /auth/register
+{
+    "username": "demo02",
+    "password": "demo02@Password",
+    "email": "demo02@gmail.com",
+}
+
+Response in success case
+Code=200
+{
+    "message": "Register success"
+}
+
+Response in user or password wrong
+Code=400
+{
+    "message": "User or password is duplicated"
+}
+
+=== Step 6 ===
+Manage user data in database
+* Use Microsoft SQL Server
+* use simple library to connect and query data from database
+* Create in repository
+
+=== Step 7 ===
+From login function in controller, to call UserRepository to check login ffrom da
+tabase
