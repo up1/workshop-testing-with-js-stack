@@ -10,3 +10,13 @@ $npm run dev
 
 List of urls
 * http://localhost:3000/api-docs
+
+
+## Run test
+* Jest
+* Jest mock
+* Supertest
+
+```
+$npm test
+```
