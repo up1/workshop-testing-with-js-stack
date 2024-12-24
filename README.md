@@ -21,6 +21,9 @@ Build fpr production mode
 $npm run build
 ```
 
+Access to frontend
+* http://localhost:5173/
+
 ## Setup database
 * https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver16&tabs=cli&pivots=cs1-bash
 ```
@@ -55,5 +58,9 @@ Create project and run
 ```
 $npm init -y
 $npm install
-$npm start
+$npm run dev
 ```
+
+Access to backend
+* http://localhost:3000/
+* http://localhost:3000/api-docs/
