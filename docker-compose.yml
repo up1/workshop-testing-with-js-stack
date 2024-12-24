@@ -1,0 +1,12 @@
+services:
+  db:
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    container_name: db
+    ports:
+      - 1433:1433
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: xitgmLwmp123
+      MSSQL_PID: Developer
