@@ -64,3 +64,7 @@ Manage user data in database
 === Step 7 ===
 From login function in controller, to call UserRepository to check login ffrom da
 tabase
+
+=== Step 8 ===
+in register process, try to encrypt password with bcrypt before save into databas
+e 

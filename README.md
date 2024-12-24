@@ -22,6 +22,7 @@ $npm run build
 ```
 
 ## Setup database
+* https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver16&tabs=cli&pivots=cs1-bash
 ```
 $docker compose up -d 
 $docker compose ps
