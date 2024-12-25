@@ -14,5 +14,5 @@ CREATE TABLE Users (
 CREATE INDEX idx_username ON Users(username);                                     
 CREATE INDEX idx_email ON Users(email);  
 GO
-INSERT INTO Users(username, email, password) VALUES( "user01", "email", "pass");
+INSERT INTO Users(username, email, password) VALUES( "demo01", "demo01@email.com", "$2b$10$j8rIDqu4NAqpb4warSRaZu/f15hmzIJxeFs2HBDcKIzNy79b7gg3C");
 GO
