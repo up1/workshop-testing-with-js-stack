@@ -64,9 +64,12 @@ $npm run build
 
 Run with Docker
 ```
-$docker compose up -d web --build
+$docker compose up -d ui --build
 $docker compose ps
 ```
+
+Access to frontend
+* http://localhost:8888/
 
 ## 6. UI testing withplaywright
 ```
