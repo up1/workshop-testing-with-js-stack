@@ -65,9 +65,6 @@ services:
     build: ./frontend/vue-project
     ports:
       - 8888:80
-    depends_on:
-      api:
-        condition: service_healthy
 
   ui_test:
     build: ./playwright
