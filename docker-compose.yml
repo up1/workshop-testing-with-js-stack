@@ -60,3 +60,8 @@ services:
     depends_on:
       api:
         condition: service_healthy
+
+  ui_test:
+    build: ./playwright
+    volumes:
+      - ./playwright-report:/app/report

@@ -67,3 +67,8 @@ Run with Docker
 $docker compose up -d web --build
 $docker compose ps
 ```
+
+## 6. UI testing withplaywright
+```
+$docker compose up ui_test --abort-on-container-exit --build
+```

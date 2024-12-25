@@ -2,3 +2,4 @@
 .env
 .vscode/
 postman-test-report/
+playwright-report/
