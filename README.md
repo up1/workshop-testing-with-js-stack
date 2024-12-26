@@ -1,4 +1,4 @@
-# Testing wrkshop
+# Testing workshop
 * Frontend with Vue
 * Backend with NodeJS
 * Database with MSSQL server
