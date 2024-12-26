@@ -76,7 +76,7 @@ services:
   ui:
     build: ./frontend/vue-project
     ports:
-      - 8888:80
+      - ${UI_PORT:-8888}:80
 
   ui_test:
     build: ./playwright

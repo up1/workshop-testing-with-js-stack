@@ -71,7 +71,7 @@ $docker compose ps
 Access to frontend
 * http://localhost:8888/
 
-## 6. UI testing withplaywright
+## 6. UI testing with playwright
 ```
 $docker compose up ui_test --abort-on-container-exit --build
 ```
