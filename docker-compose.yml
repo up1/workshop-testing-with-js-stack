@@ -33,7 +33,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - ${API_PORT:-3000}:3000
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
       interval: 5s
