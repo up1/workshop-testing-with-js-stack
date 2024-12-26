@@ -82,3 +82,14 @@ services:
     build: ./playwright
     volumes:
       - ./playwright-report:/app/report
+
+  sonarscanner_api:
+    image: sonarsource/sonar-scanner-cli
+    environment:
+      - SONAR_HOST_URL=http://128.199.109.175:9000
+      - SONAR_TOKEN=sqa_9f72a133cd0047742b95cb7227a0b978275eb9d2
+      - SONAR_LOGIN=admin
+      - SONAR_PASSWORD=xitgmLwmp
+      - SONAR_PROJECT_BASE_DIR=/app
+    volumes:
+      - ./backend:/app
