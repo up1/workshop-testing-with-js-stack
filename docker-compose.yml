@@ -55,6 +55,20 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./postman-test-report:/etc/newman/newman
+  
+  api_test2:
+    build:
+      context: ./postman
+      dockerfile: Dockerfile
+    volumes:
+      - ./postman-test-report:/etc/newman/newman
+  
+  api_test3:
+    build:
+      context: ./postman
+      dockerfile: Dockerfile
+    volumes:
+      - ./postman-test-report:/etc/newman/newman
     # depends_on:
     #   api:
     #     condition: service_healthy
