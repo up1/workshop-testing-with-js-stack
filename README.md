@@ -81,6 +81,6 @@ $docker compose up ui_test --abort-on-container-exit --build
 
 ## 7. Scan code with SonarqQube
 ```
-$docker compose up sonarscanner_api --abort-on-container-exit
-$docker compose up sonarscanner_ui --abort-on-container-exit
+$docker compose up sonarscanner_api --abort-on-container-exit  --build
+$docker compose up sonarscanner_ui --abort-on-container-exit --build
 ```
