@@ -80,7 +80,21 @@ $docker compose up ui_test --abort-on-container-exit --build
 ```
 
 ## 7. Scan code with SonarqQube
+
+Backend
 ```
-$docker compose up sonarscanner_api --abort-on-container-exit  --build
+$export SONAR_HOST_URL=http://157.230.240.135:9000
+$export SONAR_TOKEN=token
+$export SONAR_PROJECT_NAME=somkiat-backend
+$export SONAR_PROJECT_KEY=somkiat-backend
+$docker compose up sonarscanner_api --abort-on-container-exit --build
+```
+
+Frontend
+```
+$export SONAR_HOST_URL=http://157.230.240.135:9000
+$export SONAR_TOKEN=token
+$export SONAR_PROJECT_NAME=somkiat-frontend
+$export SONAR_PROJECT_KEY=somkiat-frontend
 $docker compose up sonarscanner_ui --abort-on-container-exit --build
 ```
