@@ -4,7 +4,7 @@
 * Database with MSSQL server
 
 ## 1. Setup database
-* https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver16&tabs=cli&pivots=cs1-bash
+* [MS SQL Server](https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-ver16&tabs=cli&pivots=cs1-bash)
 ```
 // Create database server
 $docker compose up -d db
