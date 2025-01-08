@@ -31,6 +31,7 @@ $npm run dev
 
 Run with Docker
 ```
+$export API_PORT=3001
 $docker compose up -d api --build
 $docker compose ps
 ```
@@ -67,6 +68,7 @@ $npm run build
 
 Run with Docker
 ```
+$export API_PORT=8889
 $docker compose up -d ui --build
 $docker compose ps
 ```
