@@ -100,3 +100,8 @@ $export SONAR_PROJECT_NAME=somkiat-frontend
 $export SONAR_PROJECT_KEY=somkiat-frontend
 $docker compose up sonarscanner_ui --abort-on-container-exit --build
 ```
+
+## 8. Scan secret keys with [GitLeaks](https://github.com/gitleaks/gitleaks)
+```
+$docker compose up gitleak --abort-on-container-exit
+```

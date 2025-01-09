@@ -104,3 +104,9 @@ services:
       - SONAR_PROJECT_NAME
     volumes:
       - ./frontend/vue-project:/app
+
+  gitleak:
+    build: ./gitleak
+    tty: true
+    volumes:
+      - .:/code
