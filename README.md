@@ -68,7 +68,7 @@ $npm run build
 
 Run with Docker
 ```
-$export API_PORT=8889
+$export UI_PORT=8889
 $docker compose up -d ui --build
 $docker compose ps
 ```
