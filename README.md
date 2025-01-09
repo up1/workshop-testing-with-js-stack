@@ -1,4 +1,4 @@
-# Testing workshop
+# Testing workshop 2025/01/09
 * Frontend with Vue
   * Testing with Playwright 
 * Backend with NodeJS
